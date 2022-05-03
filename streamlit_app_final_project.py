@@ -65,7 +65,13 @@ st.sidebar.markdown("The Global Burden of Disease (GBD) data set which provides 
 st.subheader('Pain Disorders by Country')
 st.write()
 #Bar Chart
-st.bar_chart(pain_disorders_by_country['val'])
+#st.bar_chart(pain_disorders_by_country['val'])
+
+chart3 = alt.Chart(pain_disorders_by_country).mark_bar().encode(
+    x='year',
+    y='val',
+    color='cause',
+    column='sex')
 
 
 
@@ -79,7 +85,7 @@ chart2 = alt.Chart(pain_disorders_by_country).properties(width=75).mark_bar().en
             tooltip=[alt.Tooltip('location', title='Geographic location'), 
                      alt.Tooltip('val', title='Incidence')])
 
-st.altair_chart(chart1, use_container_width=True)
+st.altair_chart(chart3, use_container_width=True)
 
 ### P1.2 ###
 
