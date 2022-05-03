@@ -6,14 +6,9 @@ import streamlit as st
 
 # Move this code into `load_data` function {{
 
+url ='https://docs.google.com/spreadsheets/d/1fOMin1J8HH7XaeNqOo6DgFy-dh4D4G4Bfagnw6aZbZQ/export?format=csv&gid=1366870646'
 
-df_gout = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_gout.csv')
-df_gbd = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_headache_small.csv')
-df_lower_back_pain = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_low_back_pain.csv')
-df_neck_pain = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_neck_pain.csv')
-df_ostheo = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_osteoarthritis.csv')
-df_other_mask = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_other_mask.csv')
-df_rheumatoid = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/rheumatoid_arthritis_data.csv')
+full_df = pd.read_csv(url)
 
 cancer_df = pd.read_csv("https://raw.githubusercontent.com/hms-dbmi/bmi706-2022/main/cancer_data/cancer_ICD10.csv").melt(  # type: ignore
     id_vars=["Country", "Year", "Cancer", "Sex"],
@@ -58,21 +53,21 @@ def load_data():
 ### P1.2 ###
 
 
-st.write("## Age-specific Incidence of Gout Across Continents")
+st.write("## Age-specific Incidence of Cause of Pain Type Across Continents")
 
 ### P2.1 ###
 # replace with st.slider
 #year = 2012
 #subset = df[df["Year"] == year]
 ### P2.1 ###
-st.slider('Select a Year', min_value=int(df_gout["year"].min()), max_value=int(df_gout["year"].max()), step=1)
+st.slider('Select a Year', min_value=int(full_df["year"].min()), max_value=int(full_df["year"].max()), step=1)
 
 ### P2.2 ###
 # replace with st.radio
 #sex = "M"
 #subset = subset[subset["Sex"] == sex]
 ### P2.2 ###
-st.radio('Select Sex',df_gout["sex"].unique())
+st.radio('Select Sex',full_df["sex"].unique())
 
 ### P2.3 ###
 # replace with st.multiselect
@@ -82,7 +77,7 @@ st.radio('Select Sex',df_gout["sex"].unique())
 
 #unique_countries = df[df['Country'].isin(countries)]
 
-unique_locations = df_gout["location"].unique()
+unique_locations = full_df["location"].unique()
 
 st.multiselect('Select location',unique_locations)
 
@@ -91,25 +86,17 @@ st.multiselect('Select location',unique_locations)
 #cancer = "Malignant neoplasm of stomach"
 #subset = subset[subset["Cancer"] == cancer]
 ### P2.4 ###
-st.selectbox('Select Cancer',df["Cancer"].unique())
+st.selectbox('Select Cause of Pain',full_df["cause"].unique())
 #st.selectbox('Select Cancer',df["Cancer"].unique())
 ### P2.5 ###
-ages = [
-    "Age <5",
-    "Age 5-14",
-    "Age 15-24",
-    "Age 25-34",
-    "Age 35-44",
-    "Age 45-54",
-    "Age 55-64",
-    "Age >64",
-]
+ages = ['Under 5', 'All Ages', '5-14 years', '15-49 years',
+       '50 to 74 years', '85 plus', '75 to 84']
 
 chart = alt.Chart(df).mark_bar().encode(
-    x=alt.X("Age", sort=ages),
-    y=alt.Y("Rate", title="Mortality rate per 100k"),
-    color="Country",
-    tooltip=["Rate"],
+    x=alt.X("age", sort=ages),
+    y=alt.Y("val", title="Incidence per 100k"),
+    color="location",
+    tooltip=["val"],
 ).properties(
     #title=f"{cancer} mortality rates for {'males' if sex == 'M' else 'females'} in {year}",
 )
