@@ -5,6 +5,16 @@ import streamlit as st
 ### P1.2 ###
 
 # Move this code into `load_data` function {{
+
+
+df_gout = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_gout.csv')
+df_gbd = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_headache_small.csv')
+df_lower_back_pain = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_low_back_pain.csv')
+df_neck_pain = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_neck_pain.csv')
+df_ostheo = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_osteoarthritis.csv')
+df_other_mask = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_other_mask.csv')
+df_rheumatoid = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/rheumatoid_arthritis_data.csv')
+
 cancer_df = pd.read_csv("https://raw.githubusercontent.com/hms-dbmi/bmi706-2022/main/cancer_data/cancer_ICD10.csv").melt(  # type: ignore
     id_vars=["Country", "Year", "Cancer", "Sex"],
     var_name="Age",
@@ -48,21 +58,21 @@ def load_data():
 ### P1.2 ###
 
 
-st.write("## Age-specific cancer mortality rates")
+st.write("## Age-specific incidence of gout")
 
 ### P2.1 ###
 # replace with st.slider
 #year = 2012
 #subset = df[df["Year"] == year]
 ### P2.1 ###
-st.slider('Select a Year', min_value=int(df["Year"].min()), max_value=int(df["Year"].max()), step=1)
+st.slider('Select a Year', min_value=int(df_gout["Year"].min()), max_value=int(df_gout["Year"].max()), step=1)
 
 ### P2.2 ###
 # replace with st.radio
 #sex = "M"
 #subset = subset[subset["Sex"] == sex]
 ### P2.2 ###
-st.radio('Select Sex',df["Sex"].unique())
+st.radio('Select Sex',df_gout["Sex"].unique())
 
 ### P2.3 ###
 # replace with st.multiselect
@@ -81,9 +91,9 @@ countries = [
 
 #unique_countries = df[df['Country'].isin(countries)]
 
-unique_countries = df["Country"].unique()
+unique_locations = df["location"].unique()
 
-st.multiselect('Select Country',unique_countries)
+st.multiselect('Select Country',unique_locations)
 
 ### P2.4 ###
 # replace with st.selectbox
