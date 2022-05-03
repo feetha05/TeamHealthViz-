@@ -4,11 +4,6 @@ import streamlit as st
 
 
 
-
-
-
-
-
 ### P1.2 ###
 
 # Move this code into `load_data` function {{
@@ -75,19 +70,16 @@ st.bar_chart(pain_disorders_by_country['val'])
 
 
 # Incidence of pain burden by diesase from 1990 to 2019 by subtype
-chart1 = alt.Chart(pain_disorders_by_country.reset_index()).properties(height=100).mark_line().encode(x=alt.X("year", title="Year"),
-            y=alt.Y("val", title="Incidence", scale=alt.Scale(type='linear')),
-            color=alt.Color('cause', title="Cause of Pain Burden"))
+chart1 = alt.Chart(pain_disorders_by_country).properties(height=100).mark_line().encode(x=alt.X("year", title="Year"),
+            y=alt.Y("val", title="Incidence", scale=alt.Scale(type='linear')),)
 
-chart2 = alt.Chart(pain_disorders_by_country.reset_index()).properties(width=75).mark_bar().encode(x=alt.X("val", title="Incidence"),
+chart2 = alt.Chart(pain_disorders_by_country).properties(width=75).mark_bar().encode(x=alt.X("val", title="Incidence"),
             y=alt.Y("location", title="Geographic location", sort=None),
             color=alt.Color('location', title="Geographic location"),
             tooltip=[alt.Tooltip('location', title='Geographic location'), 
-                     alt.Tooltip('val', title='Incidence'),
-                     alt.Tooltip('age', title='Age Group')])
+                     alt.Tooltip('val', title='Incidence')])
 
-
-st.altair_chart(alt.hconcat(chart2, alt.vconcat(chart1)), use_container_width=True)
+st.altair_chart(chart1, use_container_width=True)
 
 ### P1.2 ###
 
