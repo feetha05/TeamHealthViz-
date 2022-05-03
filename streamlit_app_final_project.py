@@ -73,6 +73,23 @@ st.write()
 st.bar_chart(pain_disorders_by_country['val'])
 
 
+
+# Incidence of pain burden by diesase from 1990 to 2019 by subtype
+chart1 = alt.Chart(pain_disorders_by_country.reset_index()).properties(height=100).mark_line().encode(x=alt.X("year", title="Year"),
+            y=alt.Y("val", title="Incidence", scale=alt.Scale(type='linear')),
+            color=alt.Color('cause', title="Cause of Pain Burden")
+
+chart2 = alt.Chart(per100k.reset_index()).properties(width=75).mark_bar().encode(
+            x=alt.X("val", title="Incidence"),
+            y=alt.Y("location", title="Geographic location", sort=None),
+            color=alt.Color('location', title="Geographic location"),
+            tooltip=[alt.Tooltip('location', title='Geographic location'), 
+                     alt.Tooltip('val', title='Incidence'),
+                     alt.Tooltip('age', title='Age Group')]
+
+
+st.altair_chart(alt.hconcat(chart2, alt.vconcat(chart1)), use_container_width=True)
+
 ### P1.2 ###
 
 st.write("## Age-specific Incidence of Cause of Pain Type Across Continents")
