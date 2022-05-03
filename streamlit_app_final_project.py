@@ -91,7 +91,7 @@ countries = [
 
 #unique_countries = df[df['Country'].isin(countries)]
 
-unique_locations = df["location"].unique()
+unique_locations = df_gout["location"].unique()
 
 st.multiselect('Select Country',unique_locations)
 
