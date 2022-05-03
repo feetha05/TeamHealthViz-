@@ -70,8 +70,7 @@ st.write()
 chart3 = alt.Chart(pain_disorders_by_country).mark_bar().encode(
     x='year',
     y='val',
-    color='cause',
-    column='sex')
+    color='cause')
 
 
 
