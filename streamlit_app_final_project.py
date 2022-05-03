@@ -94,7 +94,7 @@ ages = ['Under 5', '5-14 years', '15-49 years',
 
 chart = alt.Chart(full_df).mark_bar().encode(
     x=alt.X("age", sort=ages),
-    y=alt.Y("val", title="Incidence per 100k"),
+    y=alt.Y("val", title="Incidence"),
     color="location",
     tooltip=["val"],
 ).properties(
