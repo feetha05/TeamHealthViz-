@@ -92,7 +92,7 @@ st.selectbox('Select Cause of Pain',full_df["cause"].unique())
 ages = ['Under 5', 'All Ages', '5-14 years', '15-49 years',
        '50 to 74 years', '85 plus', '75 to 84']
 
-chart = alt.Chart(df).mark_bar().encode(
+chart = alt.Chart(full_df).mark_bar().encode(
     x=alt.X("age", sort=ages),
     y=alt.Y("val", title="Incidence per 100k"),
     color="location",
@@ -104,10 +104,10 @@ chart = alt.Chart(df).mark_bar().encode(
 
 st.altair_chart(chart, use_container_width=True)
 
-countries_in_subset = df["Country"].unique()
-if len(countries_in_subset) != len(countries):
-    if len(countries_in_subset) == 0:
+locations_in_subset = full_df["location"].unique()
+if len(locations_in_subset) != len(unique_locations):
+    if len(locations_in_subset) == 0:
         st.write("No data avaiable for given subset.")
     else:
-        missing = set(countries) - set(countries_in_subset)
+        missing = set(unique_locations) - set(locations_in_subset)
         st.write("No data available for " + ", ".join(missing) + ".")
