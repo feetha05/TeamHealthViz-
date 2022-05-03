@@ -70,7 +70,7 @@ st.sidebar.markdown("The Global Burden of Disease (GBD) data set which provides 
 st.subheader('Pain Disorders by Country')
 st.write()
 #Bar Chart
-st.bar_chart(ain_disorders_by_country['val'])
+st.bar_chart(pain_disorders_by_country['val'])
 
 
 ### P1.2 ###
