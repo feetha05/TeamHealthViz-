@@ -72,7 +72,7 @@ st.slider('Select a Year', min_value=int(df_gout["year"].min()), max_value=int(d
 #sex = "M"
 #subset = subset[subset["Sex"] == sex]
 ### P2.2 ###
-st.radio('Select Sex',df_gout["Sex"].unique())
+st.radio('Select Sex',df_gout["sex"].unique())
 
 ### P2.3 ###
 # replace with st.multiselect
