@@ -89,7 +89,7 @@ st.multiselect('Select location',unique_locations)
 st.selectbox('Select Cause of Pain',full_df["cause"].unique())
 #st.selectbox('Select Cancer',df["Cancer"].unique())
 ### P2.5 ###
-ages = ['Under 5', 'All Ages', '5-14 years', '15-49 years',
+ages = ['Under 5', '5-14 years', '15-49 years',
        '50 to 74 years', '85 plus', '75 to 84']
 
 chart = alt.Chart(full_df).mark_bar().encode(
