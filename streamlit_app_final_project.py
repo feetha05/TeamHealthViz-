@@ -65,7 +65,7 @@ st.write("## Age-specific incidence of gout")
 #year = 2012
 #subset = df[df["Year"] == year]
 ### P2.1 ###
-st.slider('Select a Year', min_value=int(df_gout["Year"].min()), max_value=int(df_gout["Year"].max()), step=1)
+st.slider('Select a Year', min_value=int(df_gout["year"].min()), max_value=int(df_gout["year"].max()), step=1)
 
 ### P2.2 ###
 # replace with st.radio
