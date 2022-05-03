@@ -2,6 +2,13 @@ import altair as alt
 import pandas as pd
 import streamlit as st
 
+
+
+
+
+
+
+
 ### P1.2 ###
 
 # Move this code into `load_data` function {{
@@ -9,6 +16,8 @@ import streamlit as st
 url ='https://docs.google.com/spreadsheets/d/1fOMin1J8HH7XaeNqOo6DgFy-dh4D4G4Bfagnw6aZbZQ/export?format=csv&gid=1366870646'
 
 full_df = pd.read_csv(url)
+
+pain_disorders_by_country = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_countries_pain_disorders.csv')
 
 cancer_df = pd.read_csv("https://raw.githubusercontent.com/hms-dbmi/bmi706-2022/main/cancer_data/cancer_ICD10.csv").melt(  # type: ignore
     id_vars=["Country", "Year", "Cancer", "Sex"],
@@ -47,11 +56,24 @@ def load_data():
     return df
 
 
+
+st.sidebar.markdown('# Global Burden of Disease Data and Reporting')
+st.sidebar.markdown("## Burden of Pain Related Metrics")
+st.sidebar.markdown("The Global Burden of Disease (GBD) data set which provides estimates of health loss (premature death and disability) from 350 diseases and injuries in 195 countries, by age and sex, from 1990 to 2019. See more at https://ghdx.healthdata.org/gbd-results-tool")
+
+
 # Uncomment the next line when finished
 # df = load_data()
 
-### P1.2 ###
+### time seris plot
 
+st.subheader('Pain Disorders by Country')
+st.write()
+#Bar Chart
+st.bar_chart(ain_disorders_by_country['val'])
+
+
+### P1.2 ###
 
 st.write("## Age-specific Incidence of Cause of Pain Type Across Continents")
 
