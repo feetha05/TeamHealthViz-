@@ -58,7 +58,7 @@ def load_data():
 ### P1.2 ###
 
 
-st.write("## Age-specific incidence of gout")
+st.write("## Age-specific Incidence of Gout Across Continents")
 
 ### P2.1 ###
 # replace with st.slider
@@ -77,15 +77,6 @@ st.radio('Select Sex',df_gout["sex"].unique())
 ### P2.3 ###
 # replace with st.multiselect
 # (hint: can use current hard-coded values below as as `default` for selector)
-countries = [
-    "Austria",
-    "Germany",
-    "Iceland",
-    "Spain",
-    "Sweden",
-    "Thailand",
-    "Turkey",
-]
 #subset = subset[subset["Country"].isin(countries)]
 ### P2.3 ###
 
@@ -93,7 +84,7 @@ countries = [
 
 unique_locations = df_gout["location"].unique()
 
-st.multiselect('Select Country',unique_locations)
+st.multiselect('Select location',unique_locations)
 
 ### P2.4 ###
 # replace with st.selectbox
