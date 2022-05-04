@@ -1,3 +1,4 @@
+from re import X
 import altair as alt
 import pandas as pd
 import streamlit as st
@@ -67,12 +68,8 @@ st.write()
 #Bar Chart
 #st.bar_chart(pain_disorders_by_country['val'])
 
-chart3 = alt.Chart(pain_disorders_by_country).mark_bar().encode(
-    x='year',
-    y='val',
-    color='cause')
-
-
+chart3 = alt.Chart(pain_disorders_by_country).properties(height=100).mark_bar().encode(x=alt.X("year", title="Year"),
+            y=alt.Y("val", title='DALYs (Disability-Adjusted Life Years)'),)
 
 # Incidence of pain burden by diesase from 1990 to 2019 by subtype
 chart1 = alt.Chart(pain_disorders_by_country).properties(height=100).mark_line().encode(x=alt.X("year", title="Year"),
