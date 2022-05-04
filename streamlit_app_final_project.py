@@ -69,7 +69,7 @@ st.altair_chart(chart6, use_container_width=True)
 
 #column=Column('Genre')
 
-chart7 = alt.Chart(df).mark_bar().encode(
+chart7 = alt.Chart(pain_disorders_by_country).mark_bar().encode(
    x=alt.X('year', axis=alt.Axis(labelAngle=0)),
    xOffset='sex',
    y=alt.Y('val', axis=alt.Axis(grid=False)),
