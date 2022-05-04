@@ -37,7 +37,7 @@ chart3 = alt.Chart(pain_disorders_by_country_sexes).properties(width=100).mark_b
 st.altair_chart(chart3, use_container_width=True)
 
 
-chart2 = alt.Chart(pain_disorders_by_country_sexes).properties(width=100).mark_bar().encode(x=alt.X("year", title="Year"),
+chart2 = alt.Chart(pain_disorders_by_country_sexes).properties(width=100).mark_bar(opacity=0.1).encode(x=alt.X("year", title="Year"),
             y=alt.Y("val", title="DALYs (Disability-Adjusted Life Years)", sort=None),
             color=alt.Color('sex', title="Sex", scale= alt.Scale(range=['#EA98D2', '#659CCA'])),
             tooltip=[alt.Tooltip('sex', title='Sex'), 
@@ -47,7 +47,7 @@ st.altair_chart(chart2, use_container_width=True)
 
 
 chart9 = alt.Chart(pain_disorders_by_country_sexes, title='Pain Burden by year and sex').mark_bar(
-    opacity=1,).encode(
+    opacity=0.1,).encode(
     column = alt.Column('sex:O', spacing = 1, header = alt.Header(labelOrient = "bottom")),
     x =alt.X('year:N',  axis=None),
     y =alt.Y('val:Q'),
@@ -56,7 +56,7 @@ chart9 = alt.Chart(pain_disorders_by_country_sexes, title='Pain Burden by year a
 
 st.altair_chart(chart9, use_container_width=True)
 
-chart10 = alt.Chart(pain_disorders_by_country_sexes).mark_bar(opacity =0.5).encode(
+chart10 = alt.Chart(pain_disorders_by_country_sexes).mark_bar(opacity =0.1).encode(
    column=alt.Column(
        'year', 
        header=alt.Header(orient='bottom')
@@ -64,7 +64,7 @@ chart10 = alt.Chart(pain_disorders_by_country_sexes).mark_bar(opacity =0.5).enco
    x=alt.X('sex', axis=alt.Axis(ticks=False, labels=False, title='')),
    y=alt.Y('val', axis=alt.Axis(grid=False)),
    color='sex').configure_view(stroke=None,)
-   
+
 st.altair_chart(chart10, use_container_width=True)
 
 ### P1.2 ###
