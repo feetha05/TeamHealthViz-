@@ -12,29 +12,11 @@ pain_disorders_by_country = pd.read_csv('https://raw.githubusercontent.com/feeth
 
 pain_disorders_by_country_sexes = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_dalys_global_trends_numbers_sexes.csv')
 
-@st.cache
-def load_data():
-    ## {{ CODE HERE }} ##
-    path = "https://raw.githubusercontent.com/hms-dbmi/bmi706-2022/main/cancer_data/cancer_ICD10.csv"
-    path_2 = "https://raw.githubusercontent.com/hms-dbmi/bmi706-2022/main/cancer_data/population.csv"
-    cancer_df = pd.read_csv(path).melt(id_vars=["Country", "Year", "Cancer", "Sex"],var_name="Age",value_name="Deaths",)
-    pop_df = pd.read_csv(path_2).melt(id_vars=["Country", "Year", "Sex"],var_name="Age",value_name="Pop",)
-    df = pd.merge(left=cancer_df, right=pop_df, how="left")
-    df["Pop"] = df.groupby(["Country", "Sex", "Age"])["Pop"].fillna(method="bfill")
-    df.dropna(inplace=True)
-    df = df.groupby(["Country", "Year", "Cancer", "Age", "Sex"]).sum().reset_index()
-    df["Rate"] = df["Deaths"] / df["Pop"] * 100_000
-    return df
-
-
 st.sidebar.markdown('# HealthViz : Final Project')
 st.sidebar.markdown('# Global Burden of Disease Data and Reporting')
 st.sidebar.markdown("## Burden of Pain Related Metrics")
 st.sidebar.markdown("The Global Burden of Disease (GBD) data set which provides estimates of health loss (premature death and disability) from 350 diseases and injuries in 195 countries, by age and sex, from 1990 to 2019. See more at https://ghdx.healthdata.org/gbd-results-tool")
 
-
-# Uncomment the next line when finished
-# df = load_data()
 
 ### time seris bar chart
 
