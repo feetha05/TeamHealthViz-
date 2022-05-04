@@ -77,7 +77,7 @@ st.write('## Pain Disorders by Country')
 
 chart3 = alt.Chart(pain_disorders_by_country).properties(width=100).mark_bar().encode(x=alt.X("year", title="Year"),
             y=alt.Y("val", title="DALYs (Disability-Adjusted Life Years)", sort=None),
-            color=alt.Color('cause', title="cause"), column = alt.Column('sex', title='Sex'),
+            color=alt.Color('cause', title="cause"), column = 'sex',
             tooltip=[alt.Tooltip('cause', title='Cause'), 
                      alt.Tooltip('val', title='DALYs (Disability-Adjusted Life Years)')])
 
@@ -92,14 +92,9 @@ chart2 = alt.Chart(pain_disorders_by_country).properties(width=75).mark_bar().en
             tooltip=[alt.Tooltip('location', title='Geographic location'), 
                      alt.Tooltip('val', title='Incidence')])
 
-st.altair_chart(chart3, use_container_width=True)
+#st.altair_chart(chart3, use_container_width=True)
 
-chart6 = alt.Chart(pain_disorders_by_country).mark_bar().encode(
-    x='year',
-    y='val',
-    color='year',
-    column='sex'
-)
+chart6 = alt.Chart(pain_disorders_by_country).mark_bar().encode(x='year',y='val',color='year',column='sex')
 
 st.altair_chart(chart6, use_container_width=True)
 
