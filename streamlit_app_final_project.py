@@ -1,3 +1,4 @@
+#pip install streamlist==1.4.0
 import altair as alt
 import pandas as pd
 import streamlit as st
@@ -8,7 +9,7 @@ import streamlit as st
 full_df = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/full_df.csv')
 
 # get the pain disorder data
-pain_disorders_by_country = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_dalys_global_trends_numbers.csv')
+#pain_disorders_by_country = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_dalys_global_trends_numbers.csv')
 
 pain_disorders_by_country_sexes = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_dalys_global_trends_numbers_sexes.csv')
 
@@ -23,7 +24,7 @@ st.sidebar.markdown("The Global Burden of Disease (GBD) data set which provides 
 st.write('## Pain Disorders by Country')
 
 
-chart3 = alt.Chart(pain_disorders_by_country).properties(width=100).mark_bar().encode(x=alt.X("year", title="Year"),
+chart3 = alt.Chart(pain_disorders_by_country_sexes).properties(width=100).mark_bar().encode(x=alt.X("year", title="Year"),
             y=alt.Y("val", title="DALYs (Disability-Adjusted Life Years)", sort=None),
             color=alt.Color('cause', title="Cause"), column = 'sex',
             tooltip=[alt.Tooltip('cause', title='Cause'), 
@@ -34,16 +35,8 @@ chart3 = alt.Chart(pain_disorders_by_country).properties(width=100).mark_bar().e
 
 st.altair_chart(chart3, use_container_width=True)
 
-sexes = ['Male', 'Female', 'Both']
-
-chart8_sexes = alt.Chart(pain_disorders_by_country_sexes).properties(width=100).mark_bar().encode(x=alt.X("year", title="Year"),
-            y=alt.Y("val", title="DALYs (Disability-Adjusted Life Years)", sort=None),
-            color=alt.Color('sex', title="Sex"), column = alt.Column('sex'),
-            tooltip=[alt.Tooltip('sex', title='Sex'), 
-                     alt.Tooltip('val', title='DALYs (Disability-Adjusted Life Years)')])
 
 
-st.altair_chart(chart8_sexes, use_container_width=True)
 #st.altair_chart(chart1, use_container_width=True)
 #st.altair_chart(chart2, use_container_width=True)
 
