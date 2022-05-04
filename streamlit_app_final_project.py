@@ -25,7 +25,7 @@ st.sidebar.markdown("The Global Burden of Disease (GBD) data set which provides 
 # Incidence of Pain Burden by Country
 st.write('## Incidence of Pain Burden by Country')
 
-chart1 = alt.Chart(pain_disorders_by_country).properties(width=100).mark_bar().encode(x=alt.X("year", title="Year"),
+chart1 = alt.Chart(pain_disorders_by_country).properties(width=200).mark_bar().encode(x=alt.X("year", title="Year"),
             y=alt.Y("val", title="DALYs (Disability-Adjusted Life Years)", sort=None),
             color=alt.Color('cause', title="Cause"),
             tooltip=[alt.Tooltip('cause', title='Cause'), 
@@ -37,7 +37,7 @@ st.write('## Incidence Of Pain Burden By Disease from 1990 to 2019 by Sex')
 
 st.altair_chart(chart1, use_container_width=True)
 
-chart2 = alt.Chart(pain_disorders_by_country_sexes).mark_bar().encode(
+chart2 = alt.Chart(pain_disorders_by_country_sexes).properties(width=200).mark_bar().encode(
     x = alt.X('sex:O'),
     y=alt.Y('sum(val):Q',title='DALYs (Disability-Adjusted Life Years)'),
     color=alt.Color('year:N', title='Year'),
@@ -86,7 +86,7 @@ st.selectbox('Select Cause of Pain',full_df["cause"].unique())
 ages = ['Under 5', '5-14 years', '15-49 years',
        '50 to 74 years', '85 plus', '75 to 84']
 
-chart = alt.Chart(full_df).mark_bar().encode(
+chart = alt.Chart(full_df)..properties(width=200).mark_bar().encode(
     x=alt.X("age", sort=ages),
     y=alt.Y("val", title="Incidence"),
     color="location",
