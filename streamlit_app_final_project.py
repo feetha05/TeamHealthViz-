@@ -1,4 +1,6 @@
 from re import X
+from tkinter.tix import COLUMN
+from turtle import title
 import altair as alt
 import pandas as pd
 import streamlit as st
@@ -91,6 +93,21 @@ chart2 = alt.Chart(pain_disorders_by_country).properties(width=75).mark_bar().en
                      alt.Tooltip('val', title='Incidence')])
 
 st.altair_chart(chart3, use_container_width=True)
+
+ages = ['Under 5', '5-14 years', '15-49 years',
+       '50 to 74 years', '85 plus', '75 to 84']
+
+chart5 = alt.Chart(pain_disorders_by_country).mark_bar().encode(
+    x=alt.X("year", title ='Year'),
+    y=alt.Y("val", title="DALYs (Disability-Adjusted Life Years)"),
+    color="location",
+    tooltip=["val"],column ='sex'
+).properties(
+    #title=f"{cancer} mortality rates for {'males' if sex == 'M' else 'females'} in {year}",
+)
+### P2.5 ###
+
+st.altair_chart(chart5, use_container_width=True)
 
 #st.altair_chart(chart1, use_container_width=True)
 #st.altair_chart(chart2, use_container_width=True)
