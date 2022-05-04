@@ -1,6 +1,3 @@
-from re import X
-from tkinter.tix import COLUMN
-from turtle import title
 import altair as alt
 import pandas as pd
 import streamlit as st
