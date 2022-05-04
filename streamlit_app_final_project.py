@@ -9,7 +9,7 @@ import streamlit as st
 full_df = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/full_df.csv')
 
 # get the pain disorder data
-#pain_disorders_by_country = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_dalys_global_trends_numbers.csv')
+pain_disorders_by_country = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_dalys_global_trends_numbers.csv')
 
 pain_disorders_by_country_sexes = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/data_M_F.csv')
 
@@ -25,7 +25,7 @@ st.sidebar.markdown("The Global Burden of Disease (GBD) data set which provides 
 st.write('## Pain Disorders by Country')
 
 
-chart3 = alt.Chart(pain_disorders_by_country_sexes).properties(width=100).mark_bar().encode(x=alt.X("year", title="Year"),
+chart3 = alt.Chart(pain_disorders_by_country).properties(width=100).mark_bar().encode(x=alt.X("year", title="Year"),
             y=alt.Y("val", title="DALYs (Disability-Adjusted Life Years)", sort=None),
             color=alt.Color('cause', title="Cause"),
             tooltip=[alt.Tooltip('cause', title='Cause'), 
@@ -37,7 +37,7 @@ chart3 = alt.Chart(pain_disorders_by_country_sexes).properties(width=100).mark_b
 st.altair_chart(chart3, use_container_width=True)
 
 
-chart2 = alt.Chart(pain_disorders_by_country_sexes).properties(width=100).mark_bar(opacity=0.1).encode(x=alt.X("year", title="Year"),
+chart2 = alt.Chart(pain_disorders_by_country).properties(width=100).mark_bar(opacity=0.1).encode(x=alt.X("year", title="Year"),
             y=alt.Y("val", title="DALYs (Disability-Adjusted Life Years)", sort=None),
             color=alt.Color('sex', title="Sex", scale= alt.Scale(range=['#EA98D2', '#659CCA'])),
             tooltip=[alt.Tooltip('sex', title='Sex'), 
@@ -45,36 +45,25 @@ chart2 = alt.Chart(pain_disorders_by_country_sexes).properties(width=100).mark_b
 
 st.altair_chart(chart2, use_container_width=True)
 
+brush = alt.selection(type='interval', encodings=['x'])
 
-chart9 = alt.Chart(pain_disorders_by_country_sexes, title='Pain Burden by year and sex').mark_bar(
-    opacity=0.1,).encode(
-    column = alt.Column('sex:O', spacing = 1, header = alt.Header(labelOrient = "bottom")),
-    x =alt.X('year:N',  axis=None),
-    y =alt.Y('val:Q'),
-    color= alt.Color('sex')
-).configure_view(stroke='transparent')
+base = alt.Chart(pain_disorders_by_country).mark_area().encode(
+    x = 'year',
+    y = 'val'
+).properties(
+    width=600,
+    height=200
+)
 
-st.altair_chart(chart9, use_container_width=True)
+upper = base.encode(
+    alt.X('date:T', scale=alt.Scale(domain=brush))
+)
 
-chart10 = alt.Chart(pain_disorders_by_country_sexes).mark_bar(opacity =0.1).encode(
-   column=alt.Column(
-       'year', 
-       header=alt.Header(orient='bottom')
-    ),
-   x=alt.X('sex', axis=alt.Axis(ticks=False, labels=False, title='')),
-   y=alt.Y('val', axis=alt.Axis(grid=False)),
-   color='sex').configure_view(stroke=None,)
+lower = base.properties(
+    height=60
+).add_selection(brush)
 
-
-st.altair_chart(chart10, use_container_width=True)
-
-chart11 = alt.Chart(pain_disorders_by_country_sexes).mark_line().encode(
-    x=alt.X("year"),
-    y=alt.Y(alt.repeat('layer'), aggregate='sum', title="Pain Burden By Year and Sex"),
-    color=alt.ColorDatum(alt.repeat('layer'))
-).repeat(layer=["Male", "Female"])
-
-st.altair_chart(chart11, use_container_width=True)
+alt.vconcat(upper, lower)
 
 ### P1.2 ###
 
