@@ -31,11 +31,13 @@ chart1 = alt.Chart(pain_disorders_by_country).properties(width=30).mark_bar().en
             tooltip=[alt.Tooltip('cause', title='Cause'), 
                      alt.Tooltip('val', title='DALYs (Disability-Adjusted Life Years)')])
 
-st.write('## Incidence Of Pain Burden By Disease from 1990 to 2019 by Sex')
 
-# Incidence of pain burden by diesase from 1990 to 2019 by sex
+
 
 st.altair_chart(chart1, use_container_width=True)
+
+# Incidence of pain burden by diesase from 1990 to 2019 by sex
+st.write('## Incidence Of Pain Burden By Disease from 1990 to 2019 by Sex')
 
 chart2 = alt.Chart(pain_disorders_by_country_sexes).properties(width=30).mark_bar().encode(
     x = alt.X('sex:O'),
