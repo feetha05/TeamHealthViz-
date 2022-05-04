@@ -86,7 +86,7 @@ st.selectbox('Select Cause of Pain',full_df["cause"].unique())
 ages = ['Under 5', '5-14 years', '15-49 years',
        '50 to 74 years', '85 plus', '75 to 84']
 
-chart = alt.Chart(full_df)..properties(width=200).mark_bar().encode(
+chart = alt.Chart(full_df).properties(width=200).mark_bar().encode(
     x=alt.X("age", sort=ages),
     y=alt.Y("val", title="Incidence"),
     color="location",
