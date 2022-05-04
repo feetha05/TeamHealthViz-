@@ -53,10 +53,7 @@ chart3 = alt.Chart(pain_disorders_by_country).properties(width=100).mark_bar().e
 
 # Incidence of pain burden by diesase from 1990 to 2019 by subtype
 
-chart7 = alt.Chart(pain_disorders_by_country).mark_bar().encode( x=alt.X('year', axis=alt.Axis(labelAngle=0)),xOffset='sex',
-   y=alt.Y('val', axis=alt.Axis(grid=False)),color='sex').configure_view(stroke=None,)
-
-st.altair_chart(chart3, use_container_width=True)
+st.altair_chart(chart31, use_container_width=True)
 
 #st.altair_chart(chart1, use_container_width=True)
 #st.altair_chart(chart2, use_container_width=True)
