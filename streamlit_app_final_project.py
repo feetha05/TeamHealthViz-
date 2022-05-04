@@ -42,7 +42,7 @@ chart2 = alt.Chart(pain_disorders_by_country).mark_bar().encode(
     color=alt.Color('year:N', title='Year'),
     column= alt.Column('year:N', title='Year'))
 
-st.altair_chart(chart2, use_container_width=True)
+st.altair_chart(chart2)
 
 ### P1.2 ###
 
