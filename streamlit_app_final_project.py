@@ -39,8 +39,7 @@ st.altair_chart(chart3, use_container_width=True)
 chart2 = alt.Chart(pain_disorders_by_country_sexes).mark_bar().encode(
     x='year',
     y='val',
-    color='sex',
-    column='sex'
+    color='sex'
 )
 
 st.altair_chart(chart2, use_container_width=True)
