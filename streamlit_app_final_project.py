@@ -36,15 +36,6 @@ chart3 = alt.Chart(pain_disorders_by_country).properties(width=100).mark_bar().e
 
 st.altair_chart(chart3, use_container_width=True)
 
-
-chart2 = alt.Chart(pain_disorders_by_country).properties(width=100).mark_bar(opacity=0.1).encode(x=alt.X("year", title="Year"),
-            y=alt.Y("val", title="DALYs (Disability-Adjusted Life Years)", sort=None),
-            color=alt.Color('sex', title="Sex", scale= alt.Scale(range=['#EA98D2', '#659CCA'])),
-            tooltip=[alt.Tooltip('sex', title='Sex'), 
-                     alt.Tooltip('val', title='DALYs (Disability-Adjusted Life Years)')])
-
-st.altair_chart(chart2, use_container_width=True)
-
 brush = alt.selection(type='interval', encodings=['x'])
 
 base = alt.Chart(pain_disorders_by_country).mark_area().encode(
@@ -63,7 +54,9 @@ lower = base.properties(
     height=60
 ).add_selection(brush)
 
-alt.vconcat(upper, lower)
+chart_x = alt.vconcat(upper, lower)
+
+st.altair_chart(chart_x, use_container_width=True)
 
 ### P1.2 ###
 
