@@ -44,7 +44,15 @@ chart2 = alt.Chart(pain_disorders_by_country_sexes).properties(width=100).mark_b
                      alt.Tooltip('val', title='DALYs (Disability-Adjusted Life Years)')])
 
 st.altair_chart(chart2, use_container_width=True)
-#st.altair_chart(chart2, use_container_width=True)
+
+
+chart4 = alt.Chart(pain_disorders_by_country_sexes).mark_bar().encode(
+    x='year',
+    y='val',
+    color='year',
+    column='sex')
+
+st.altair_chart(chart4, use_container_width=True)
 
 ### P1.2 ###
 
