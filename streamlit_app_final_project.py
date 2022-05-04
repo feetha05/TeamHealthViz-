@@ -45,11 +45,11 @@ chart2 = alt.Chart(pain_disorders_by_country_sexes).properties(width=100).mark_b
 
 st.altair_chart(chart2, use_container_width=True)
 
-
+#x =alt.X('year', sort = ["Male", "Female"],  axis=None)
 chart9 = alt.Chart(pain_disorders_by_country_sexes, title='Pain Burden by year and sex').mark_bar(
     opacity=1,).encode(
     column = alt.Column('year:O', spacing = 5, header = alt.Header(labelOrient = "bottom")),
-    x =alt.X('sex', sort = ["Male", "Female"],  axis=None),
+    x =alt.X('year',  axis=None),
     y =alt.Y('val:Q'),
     color= alt.Color('sex')
 ).configure_view(stroke='transparent')
