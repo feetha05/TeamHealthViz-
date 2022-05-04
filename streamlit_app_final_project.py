@@ -11,7 +11,8 @@ full_df = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-
 # get the pain disorder data
 #pain_disorders_by_country = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_dalys_global_trends_numbers.csv')
 
-pain_disorders_by_country_sexes = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_dalys_global_trends_numbers_sexes.csv')
+pain_disorders_by_country_sexes = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/data_M_F.csv')
+
 
 st.sidebar.markdown('# HealthViz : Final Project')
 st.sidebar.markdown('# Global Burden of Disease Data and Reporting')
@@ -36,7 +37,6 @@ chart3 = alt.Chart(pain_disorders_by_country_sexes).properties(width=100).mark_b
 st.altair_chart(chart3, use_container_width=True)
 
 
-
 chart2 = alt.Chart(pain_disorders_by_country_sexes).properties(width=100).mark_bar().encode(x=alt.X("year", title="Year"),
             y=alt.Y("val", title="DALYs (Disability-Adjusted Life Years)", sort=None),
             color=alt.Color('sex', title="Sex"),
@@ -44,15 +44,6 @@ chart2 = alt.Chart(pain_disorders_by_country_sexes).properties(width=100).mark_b
                      alt.Tooltip('val', title='DALYs (Disability-Adjusted Life Years)')])
 
 st.altair_chart(chart2, use_container_width=True)
-
-
-chart4 = alt.Chart(pain_disorders_by_country_sexes).mark_bar().encode(
-    x='year',
-    y='val',
-    color='year',
-    column='sex')
-
-st.altair_chart(chart4, use_container_width=True)
 
 ### P1.2 ###
 
