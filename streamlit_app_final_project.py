@@ -103,7 +103,7 @@ chart4 = alt.Chart(pain_disorders_by_country_sexes).mark_bar().encode(
     x = alt.X('sex:O'),
     y=alt.Y('sum(val):Q',title='DALYs (Disability-Adjusted Life Years)'),
     color=alt.Color('age:N', title='age'),
-    column= alt.Column('year:N', title='Year'))
+    column= alt.Column('sex:N', title='sex'))
 
 st.altair_chart(chart4)
 
