@@ -70,8 +70,14 @@ st.write()
 
 #chart3 = alt.Chart(pain_disorders_by_country).mark_bar().encode(x=alt.X('year', title = 'Year'), y = alt.Y('val', title= 'DALYs (Disability-Adjusted Life Years)')),color='cause')
 
-chart3 = alt.Chart(pain_disorders_by_country).properties(height=100).mark_bar().encode(x=alt.X("year", title="Year"),
-            y=alt.Y("val", title='DALYs (Disability-Adjusted Life Years)'),)
+#chart3 = alt.Chart(pain_disorders_by_country).properties(height=100).mark_bar().encode(x=alt.X("year", title="Year"), y=alt.Y("val", title='DALYs (Disability-Adjusted Life Years)'),)
+
+chart3 = alt.Chart(pain_disorders_by_country).properties(width=75).mark_bar().encode(x=alt.X("year", title="Year"),
+            y=alt.Y("val", title="DALYs (Disability-Adjusted Life Years)", sort=None),
+            color=alt.Color('cause', title="cause"),
+            tooltip=[alt.Tooltip('cause', title='cause'), 
+                     alt.Tooltip('val', title='DALYs (Disability-Adjusted Life Years)')])
+
 
 # Incidence of pain burden by diesase from 1990 to 2019 by subtype
 chart1 = alt.Chart(pain_disorders_by_country).properties(height=100).mark_line().encode(x=alt.X("year", title="Year"),
