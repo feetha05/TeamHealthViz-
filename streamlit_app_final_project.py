@@ -64,7 +64,9 @@ st.sidebar.markdown("The Global Burden of Disease (GBD) data set which provides 
 ### time seris plot
 
 #st.subheader('Pain Disorders by Country')
-st.write('Pain Disorders by Country')
+st.write('# HealthViz : Final Project')
+st.write('## Global Burden of Disease Data and Reporting')
+st.write('## Pain Disorders by Country')
 #Bar Chart
 #st.bar_chart(pain_disorders_by_country['val'])
 
