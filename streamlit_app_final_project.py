@@ -23,7 +23,7 @@ st.sidebar.markdown("The Global Burden of Disease (GBD) data set which provides 
 ### time seris bar chart
 
 # Incidence of Pain Burden by Country
-st.write('## Incidence of Pain Burden by Country')
+st.write('## Global burden of pain disorders')
 
 chart1 = alt.Chart(pain_disorders_by_country).properties(width=30).mark_bar().encode(x=alt.X("year", title="Year"),
             y=alt.Y("val", title="DALYs (Disability-Adjusted Life Years)", sort=None),
