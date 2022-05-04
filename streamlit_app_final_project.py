@@ -56,6 +56,17 @@ chart9 = alt.Chart(pain_disorders_by_country_sexes, title='Pain Burden by year a
 
 st.altair_chart(chart9, use_container_width=True)
 
+chart10 = alt.Chart(pain_disorders_by_country_sexes).mark_bar(opacity =0.5).encode(
+   column=alt.Column(
+       'year', 
+       header=alt.Header(orient='bottom')
+    ),
+   x=alt.X('sex', axis=alt.Axis(ticks=False, labels=False, title='')),
+   y=alt.Y('val', axis=alt.Axis(grid=False)),
+   color='sex').configure_view(stroke=None,)
+   
+st.altair_chart(chart10, use_container_width=True)
+
 ### P1.2 ###
 
 st.write("## Age-specific Incidence of Cause of Pain Type Across Continents")
