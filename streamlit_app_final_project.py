@@ -25,7 +25,7 @@ st.sidebar.markdown("The Global Burden of Disease (GBD) data set which provides 
 # Incidence of Pain Burden by Country
 st.write('## Incidence of Pain Burden by Country')
 
-chart1 = alt.Chart(pain_disorders_by_country).properties(width=30).mark_bar().encode(x=alt.X("year", title="Year",min=1990),
+chart1 = alt.Chart(pain_disorders_by_country).properties(width=30).mark_bar().encode(x=alt.X("year", title="Year"),
             y=alt.Y("val", title="DALYs (Disability-Adjusted Life Years)", sort=None),
             color=alt.Color('cause', title="Cause"),
             tooltip=[alt.Tooltip('cause', title='Cause'), 
