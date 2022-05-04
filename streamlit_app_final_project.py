@@ -6,38 +6,12 @@ import pandas as pd
 import streamlit as st
 
 
-
-### P1.2 ###
-
-# Move this code into `load_data` function {{
-
-#url ='https://docs.google.com/spreadsheets/d/1fOMin1J8HH7XaeNqOo6DgFy-dh4D4G4Bfagnw6aZbZQ/export?format=csv&gid=1366870646'
+# get the full data
 
 full_df = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/full_df.csv')
 
+# get the pain disorder data
 pain_disorders_by_country = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_dalys_global_trends_numbers.csv')
-
-cancer_df = pd.read_csv("https://raw.githubusercontent.com/hms-dbmi/bmi706-2022/main/cancer_data/cancer_ICD10.csv").melt(  # type: ignore
-    id_vars=["Country", "Year", "Cancer", "Sex"],
-    var_name="Age",
-    value_name="Deaths",
-)
-
-pop_df = pd.read_csv("https://raw.githubusercontent.com/hms-dbmi/bmi706-2022/main/cancer_data/population.csv").melt(  # type: ignore
-    id_vars=["Country", "Year", "Sex"],
-    var_name="Age",
-    value_name="Pop",
-)
-
-df = pd.merge(left=cancer_df, right=pop_df, how="left")
-df["Pop"] = df.groupby(["Country", "Sex", "Age"])["Pop"].fillna(method="bfill")
-df.dropna(inplace=True)
-
-df = df.groupby(["Country", "Year", "Cancer", "Age", "Sex"]).sum().reset_index()
-df["Rate"] = df["Deaths"] / df["Pop"] * 100_000
-
-# }}
-
 
 @st.cache
 def load_data():
@@ -63,17 +37,15 @@ st.sidebar.markdown("The Global Burden of Disease (GBD) data set which provides 
 # Uncomment the next line when finished
 # df = load_data()
 
-### time seris plot
+### time seris bar chart
 
-#st.subheader('Pain Disorders by Country'
-#st.write('## Global Burden of Disease Data and Reporting')
 st.write('## Pain Disorders by Country')
-#Bar Chart
+
 #st.bar_chart(pain_disorders_by_country['val'])
 
 #chart3 = alt.Chart(pain_disorders_by_country).mark_bar().encode(x=alt.X('year', title = 'Year'), y = alt.Y('val', title= 'DALYs (Disability-Adjusted Life Years)')),color='cause')
 
-#chart3 = alt.Chart(pain_disorders_by_country).properties(height=100).mark_bar().encode(x=alt.X("year", title="Year"), y=alt.Y("val", title='DALYs (Disability-Adjusted Life Years)'),)
+chart31 = alt.Chart(pain_disorders_by_country).properties(height=100).mark_bar().encode(x=alt.X("year", title="Year"), y=alt.Y("val", title='DALYs (Disability-Adjusted Life Years)'),)
 
 chart3 = alt.Chart(pain_disorders_by_country).properties(width=100).mark_bar().encode(x=alt.X("year", title="Year"),
             y=alt.Y("val", title="DALYs (Disability-Adjusted Life Years)", sort=None),
