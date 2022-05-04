@@ -38,11 +38,6 @@ st.sidebar.markdown("The Global Burden of Disease (GBD) data set which provides 
 
 st.write('## Pain Disorders by Country')
 
-#st.bar_chart(pain_disorders_by_country['val'])
-
-#chart3 = alt.Chart(pain_disorders_by_country).mark_bar().encode(x=alt.X('year', title = 'Year'), y = alt.Y('val', title= 'DALYs (Disability-Adjusted Life Years)')),color='cause')
-
-chart31 = alt.Chart(pain_disorders_by_country).properties(height=100).mark_bar().encode(x=alt.X("year", title="Year"), y=alt.Y("val", title='DALYs (Disability-Adjusted Life Years)'),)
 
 chart3 = alt.Chart(pain_disorders_by_country).properties(width=100).mark_bar().encode(x=alt.X("year", title="Year"),
             y=alt.Y("val", title="DALYs (Disability-Adjusted Life Years)", sort=None),
@@ -53,7 +48,7 @@ chart3 = alt.Chart(pain_disorders_by_country).properties(width=100).mark_bar().e
 
 # Incidence of pain burden by diesase from 1990 to 2019 by subtype
 
-st.altair_chart(chart31, use_container_width=True)
+st.altair_chart(chart3, use_container_width=True)
 
 #st.altair_chart(chart1, use_container_width=True)
 #st.altair_chart(chart2, use_container_width=True)
