@@ -32,8 +32,6 @@ chart1 = alt.Chart(pain_disorders_by_country).properties(width=30).mark_bar().en
                      alt.Tooltip('val', title='DALYs (Disability-Adjusted Life Years)')])
 
 
-
-
 st.altair_chart(chart1, use_container_width=True)
 
 # Incidence of pain burden by diesase from 1990 to 2019 by sex
@@ -99,6 +97,15 @@ chart = alt.Chart(full_df).properties(width=200).mark_bar().encode(
 ### P2.5 ###
 
 st.altair_chart(chart, use_container_width=True)
+
+
+chart4 = alt.Chart(pain_disorders_by_country_sexes).mark_bar().encode(
+    x = alt.X('sex:O'),
+    y=alt.Y('sum(val):Q',title='DALYs (Disability-Adjusted Life Years)'),
+    color=alt.Color('age:N', title='age'),
+    column= alt.Column('year:N', title='Year'))
+
+st.altair_chart(chart4)
 
 locations_in_subset = full_df["location"].unique()
 if len(locations_in_subset) != len(unique_locations):
