@@ -68,10 +68,15 @@ chart6 = alt.Chart(pain_disorders_by_country).mark_bar().encode(x='year',y='val'
 st.altair_chart(chart6, use_container_width=True)
 
 #column=Column('Genre')
-chart7 = Chart(pain_disorders_by_country).mark_bar().encode(
-   x=X('year'),
-   y=Y('val'),
-   color=Color('sex', scale=Scale(range=['#EA98D2', '#659CCA']))).configure_facet_cell(strokeWidth=0.0,)
+
+chart7 = alt.Chart(df).mark_bar().encode(
+   x=alt.X('year', axis=alt.Axis(labelAngle=0)),
+   xOffset='sex',
+   y=alt.Y('val', axis=alt.Axis(grid=False)),
+   color='sex'
+).configure_view(
+    stroke=None,
+)
 
 st.altair_chart(chart7, use_container_width=True)
 
