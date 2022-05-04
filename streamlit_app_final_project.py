@@ -99,6 +99,8 @@ chart = alt.Chart(full_df).properties(width=200).mark_bar().encode(
 st.altair_chart(chart, use_container_width=True)
 
 
+st.write("## Incidence of Cause of Pain Type Across Sex and Age Group")
+
 chart4 = alt.Chart(full_df).mark_bar().encode(
     x = alt.X('sex:O'),
     y=alt.Y('sum(val):Q',title='DALYs (Disability-Adjusted Life Years)'),
