@@ -10,6 +10,8 @@ full_df = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-
 # get the pain disorder data
 pain_disorders_by_country = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_dalys_global_trends_numbers.csv')
 
+pain_disorders_by_country_sexes = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_dalys_global_trends_numbers_sexes.csv')
+
 @st.cache
 def load_data():
     ## {{ CODE HERE }} ##
@@ -57,6 +59,15 @@ alt.Color('sex'))
 
 
 st.altair_chart(gp_chart, use_container_width=True)
+
+
+chart8_sexes = alt.Chart(pain_disorders_by_country_sexes).mark_bar().encode(
+alt.Column('sex'), alt.X('year'),
+alt.Y('val', axis=alt.Axis(grid=False)),
+alt.Color('sex'))
+
+
+st.altair_chart(chart8_sexes, use_container_width=True)
 #st.altair_chart(chart1, use_container_width=True)
 #st.altair_chart(chart2, use_container_width=True)
 
