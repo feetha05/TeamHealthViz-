@@ -60,9 +60,10 @@ alt.Color('sex'))
 
 st.altair_chart(gp_chart, use_container_width=True)
 
+sexes = ['Male', 'Female', 'Both']
 
 chart8_sexes = alt.Chart(pain_disorders_by_country_sexes).mark_bar().encode(
-alt.Column('sex'), alt.X('year'),
+alt.Column('sex'), alt.X('year',sort=sexes),
 alt.Y('val', axis=alt.Axis(grid=False)),
 alt.Color('sex'))
 
