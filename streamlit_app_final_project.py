@@ -50,6 +50,14 @@ chart3 = alt.Chart(pain_disorders_by_country).properties(width=100).mark_bar().e
 
 st.altair_chart(chart3, use_container_width=True)
 
+gp_chart = alt.Chart(pain_disorders_by_country).mark_bar().encode(
+alt.Column('sex'), alt.X('year'),
+alt.Y('val', axis=alt.Axis(grid=False)),
+alt.Color('year'))
+
+gp_chart.display()
+
+
 #st.altair_chart(chart1, use_container_width=True)
 #st.altair_chart(chart2, use_container_width=True)
 
