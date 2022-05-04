@@ -52,31 +52,9 @@ chart3 = alt.Chart(pain_disorders_by_country).properties(width=100).mark_bar().e
 
 
 # Incidence of pain burden by diesase from 1990 to 2019 by subtype
-chart1 = alt.Chart(pain_disorders_by_country).properties(height=100).mark_line().encode(x=alt.X("year", title="Year"),
-            y=alt.Y("val", title="Incidence", scale=alt.Scale(type='linear')),)
 
-chart2 = alt.Chart(pain_disorders_by_country).properties(width=75).mark_bar().encode(x=alt.X("val", title="Incidence"),
-            y=alt.Y("location", title="Geographic location", sort=None),
-            color=alt.Color('location', title="Geographic location"),
-            tooltip=[alt.Tooltip('location', title='Geographic location'), 
-                     alt.Tooltip('val', title='Incidence')])
-
-#st.altair_chart(chart3, use_container_width=True)
-
-chart6 = alt.Chart(pain_disorders_by_country).mark_bar().encode(x='year',y='val',color='sex',column='location')
-
-st.altair_chart(chart6, use_container_width=True)
-
-#column=Column('Genre')
-
-chart7 = alt.Chart(pain_disorders_by_country).mark_bar().encode(
-   x=alt.X('year', axis=alt.Axis(labelAngle=0)),
-   xOffset='sex',
-   y=alt.Y('val', axis=alt.Axis(grid=False)),
-   color='sex'
-).configure_view(
-    stroke=None,
-)
+chart7 = alt.Chart(pain_disorders_by_country).mark_bar().encode( x=alt.X('year', axis=alt.Axis(labelAngle=0)),xOffset='sex',
+   y=alt.Y('val', axis=alt.Axis(grid=False)),color='sex').configure_view(stroke=None,)
 
 st.altair_chart(chart7, use_container_width=True)
 
