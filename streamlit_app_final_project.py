@@ -55,9 +55,8 @@ alt.Column('sex'), alt.X('year'),
 alt.Y('val', axis=alt.Axis(grid=False)),
 alt.Color('year'))
 
-gp_chart.display()
 
-
+st.altair_chart(gp_chart, use_container_width=True)
 #st.altair_chart(chart1, use_container_width=True)
 #st.altair_chart(chart2, use_container_width=True)
 
