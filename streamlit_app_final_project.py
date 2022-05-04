@@ -68,6 +68,8 @@ st.write()
 #Bar Chart
 #st.bar_chart(pain_disorders_by_country['val'])
 
+#chart3 = alt.Chart(pain_disorders_by_country).mark_bar().encode(x=alt.X('year', title = 'Year'), y = alt.Y('val', title= 'DALYs (Disability-Adjusted Life Years)')),color='cause')
+
 chart3 = alt.Chart(pain_disorders_by_country).properties(height=100).mark_bar().encode(x=alt.X("year", title="Year"),
             y=alt.Y("val", title='DALYs (Disability-Adjusted Life Years)'),)
 
