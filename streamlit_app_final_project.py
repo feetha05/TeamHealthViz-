@@ -8,11 +8,11 @@ import streamlit as st
 
 # Move this code into `load_data` function {{
 
-url ='https://docs.google.com/spreadsheets/d/1fOMin1J8HH7XaeNqOo6DgFy-dh4D4G4Bfagnw6aZbZQ/export?format=csv&gid=1366870646'
+#url ='https://docs.google.com/spreadsheets/d/1fOMin1J8HH7XaeNqOo6DgFy-dh4D4G4Bfagnw6aZbZQ/export?format=csv&gid=1366870646'
 
-full_df = pd.read_csv(url)
+full_df = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/full_df.csv')
 
-pain_disorders_by_country = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_countries_pain_disorders.csv')
+pain_disorders_by_country = pd.read_csv('https://raw.githubusercontent.com/feetha05/TeamHealthViz-/main/gbd_dalys_global_trends_numbers.csv')
 
 cancer_df = pd.read_csv("https://raw.githubusercontent.com/hms-dbmi/bmi706-2022/main/cancer_data/cancer_ICD10.csv").melt(  # type: ignore
     id_vars=["Country", "Year", "Cancer", "Sex"],
