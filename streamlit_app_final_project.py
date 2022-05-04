@@ -74,7 +74,7 @@ st.write('### Pain Disorders by Country')
 
 #chart3 = alt.Chart(pain_disorders_by_country).properties(height=100).mark_bar().encode(x=alt.X("year", title="Year"), y=alt.Y("val", title='DALYs (Disability-Adjusted Life Years)'),)
 
-chart3 = alt.Chart(pain_disorders_by_country).properties(width=100,height=100).mark_bar().encode(x=alt.X("year", title="Year"),
+chart3 = alt.Chart(pain_disorders_by_country).properties(width=100).mark_bar().encode(x=alt.X("year", title="Year"),
             y=alt.Y("val", title="DALYs (Disability-Adjusted Life Years)", sort=None),
             color=alt.Color('cause', title="cause"), column = alt.Column('sex', title='Sex'),
             tooltip=[alt.Tooltip('cause', title='Cause'), 
