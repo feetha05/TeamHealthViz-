@@ -63,7 +63,7 @@ chart2 = alt.Chart(pain_disorders_by_country).properties(width=75).mark_bar().en
 
 #st.altair_chart(chart3, use_container_width=True)
 
-chart6 = alt.Chart(pain_disorders_by_country).mark_bar().encode(x='year',y='val',color='year',column='sex')
+chart6 = alt.Chart(pain_disorders_by_country).mark_bar().encode(x='year',y='val',color='sex',column='location')
 
 st.altair_chart(chart6, use_container_width=True)
 
