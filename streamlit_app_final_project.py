@@ -65,7 +65,16 @@ chart10 = alt.Chart(pain_disorders_by_country_sexes).mark_bar(opacity =0.1).enco
    y=alt.Y('val', axis=alt.Axis(grid=False)),
    color='sex').configure_view(stroke=None,)
 
+
 st.altair_chart(chart10, use_container_width=True)
+
+chart11 = alt.Chart(pain_disorders_by_country_sexes).mark_line().encode(
+    x=alt.X("year", bin=True),
+    y=alt.Y(alt.repeat('year'), aggregate='mean', title="Mean of US and Worldwide Gross"),
+    color=alt.ColorDatum(alt.repeat('year'))
+).repeat(layer=["Male", "Female"])
+
+st.altair_chart(chart11, use_container_width=True)
 
 ### P1.2 ###
 
