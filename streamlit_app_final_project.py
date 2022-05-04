@@ -52,7 +52,7 @@ def load_data():
     return df
 
 
-
+st.sidebar.markdown('# HealthViz : Final Project')
 st.sidebar.markdown('# Global Burden of Disease Data and Reporting')
 st.sidebar.markdown("## Burden of Pain Related Metrics")
 st.sidebar.markdown("The Global Burden of Disease (GBD) data set which provides estimates of health loss (premature death and disability) from 350 diseases and injuries in 195 countries, by age and sex, from 1990 to 2019. See more at https://ghdx.healthdata.org/gbd-results-tool")
@@ -63,10 +63,9 @@ st.sidebar.markdown("The Global Burden of Disease (GBD) data set which provides 
 
 ### time seris plot
 
-#st.subheader('Pain Disorders by Country')
-st.write('# HealthViz : Final Project')
+#st.subheader('Pain Disorders by Country'
 st.write('## Global Burden of Disease Data and Reporting')
-st.write('### Pain Disorders by Country')
+st.write('#Pain Disorders by Country')
 #Bar Chart
 #st.bar_chart(pain_disorders_by_country['val'])
 
