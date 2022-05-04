@@ -48,8 +48,8 @@ st.altair_chart(chart2, use_container_width=True)
 
 chart9 = alt.Chart(pain_disorders_by_country_sexes, title='Pain Burden by year and sex').mark_bar(
     opacity=1,).encode(
-    column = alt.Column('year:O', spacing = 1, header = alt.Header(labelOrient = "bottom")),
-    x =alt.X('sex', sort = ["Male", "Female"],  axis=None),
+    column = alt.Column('sex:O', spacing = 1, header = alt.Header(labelOrient = "bottom")),
+    x =alt.X('year:N',  axis=None),
     y =alt.Y('val:Q'),
     color= alt.Color('sex')
 ).configure_view(stroke='transparent')
