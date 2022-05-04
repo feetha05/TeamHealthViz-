@@ -99,11 +99,11 @@ chart = alt.Chart(full_df).properties(width=200).mark_bar().encode(
 st.altair_chart(chart, use_container_width=True)
 
 
-chart4 = alt.Chart(pain_disorders_by_country_sexes).mark_bar().encode(
+chart4 = alt.Chart(pain_disorders_by_country).mark_bar().encode(
     x = alt.X('sex:O'),
     y=alt.Y('sum(val):Q',title='DALYs (Disability-Adjusted Life Years)'),
     color=alt.Color('age:N', title='age'),
-    column= alt.Column('sex:N', title='sex'))
+    column= alt.Column('year:N', title='Year'))
 
 st.altair_chart(chart4)
 
