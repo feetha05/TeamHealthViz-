@@ -36,7 +36,7 @@ chart1 = alt.Chart(pain_disorders_by_country).properties(width=100).mark_bar().e
 
 st.altair_chart(chart1, use_container_width=True)
 
-chart2 = alt.Chart(pain_disorders_by_country).mark_bar().encode(
+chart2 = alt.Chart(pain_disorders_by_country_sexes).mark_bar().encode(
     x = alt.X('sex:O'),
     y=alt.Y('sum(val):Q',title='DALYs (Disability-Adjusted Life Years)'),
     color=alt.Color('year:N', title='Year'),
