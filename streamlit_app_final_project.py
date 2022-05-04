@@ -70,7 +70,7 @@ st.altair_chart(chart10, use_container_width=True)
 
 chart11 = alt.Chart(pain_disorders_by_country_sexes).mark_line().encode(
     x=alt.X("year"),
-    y=alt.Y(alt.repeat('layer'), aggregate='sum', title="Pain Burden By Year and Sex"),
+    y=alt.Y(alt.repeat('sex'), aggregate='sum', title="Pain Burden By Year and Sex"),
     color=alt.ColorDatum(alt.repeat('layer'))
 ).repeat(layer=["Male", "Female"])
 
